@@ -230,7 +230,7 @@ Get-VMHost | ForEach-Object -Process {
         Write-Host "$(Get-Date): Running bash script on ESXi host $($_.Name) and write DFW metrics to syslog"
         $sshOut = Invoke-SSHCommand -SessionId $ssh.SessionId -Command $shellScript -ErrorAction Stop
         Write-Host "$(Get-Date): Closing SSH session to ESXi host $($_.Name)"
-        Remove-SSHSession -SessionId $ssh.SessionId -InformationAction SilentlyContinue
+        Remove-SSHSession -SessionId $ssh.SessionId
         
         # Stop SSH if it was stopped before
         if (-not ($sshRunning)) {
