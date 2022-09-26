@@ -187,7 +187,13 @@ add-type @"
 # Read all information to variables
 Write-Host "$(Get-Date): Reading config files"
 if (-not (Test-Path $configLoc -PathType Leaf)) { throw "The file $configLoc does not exist." }
-$config = Get-Content $configLoc | ConvertFrom-Json
+try {
+    $config = Get-Content $configLoc | ConvertFrom-Json
+}
+catch {
+    $message = $_
+    throw "JSON format in file $configLoc is not readable! `n $message"
+}
 if (-not (Test-Path $config.shellScriptLoc -PathType Leaf)) { throw "The file $config.shellScriptLoc does not exist." }
 if (-not (Test-Path $config.credentialLoc -PathType Leaf)) { throw "The file $config.credentialLoc does not exist." }
 $shellScript = (Get-Content $config.shellScriptLoc | Select-String -Pattern '^#|^\s*#|^\s*$' -NotMatch) -join '; ' -replace '\t', '' -replace 'do;', 'do' -replace 'then;', 'then'
