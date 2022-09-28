@@ -2,6 +2,10 @@
 Purpose of this is for monitoring and alerting NSX-T distributed firewall (DFW) VM and metrics with vRealize Log Insight (vRLI) and vRealize Operations
 (vROps). This includes DFW rules applied per virtual NIC, DFW rules applied per Host and DFW heap usage per host.
 
+![Alt text](https://github.com/kaischwender/nsxt-dfw-monitoring-with-vrli-vrops/blob/main/vRLI/vRLI-Dashboard.jpg?raw=true "vRLI Dashboard")
+
+![Alt text](https://github.com/kaischwender/nsxt-dfw-monitoring-with-vrli-vrops/blob/main/vROps/vROps-Dashboard.jpg?raw=true "vROps Dashboard")
+
 ## Technologies
 Write-DfwMetricsToLogOps.ps1 was tested with
   - PowerShell 5.1
