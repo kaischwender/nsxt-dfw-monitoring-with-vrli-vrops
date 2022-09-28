@@ -13,20 +13,25 @@ get-dfwhostmetrics.sh was tested with
   
 An SSH session is established between the host running the PowerShell script and every ESXi host. Make sure TCP 22 is allowed by your firewalls.
 
-## Setup
-1. Install required modules
+## Installation
+1. Copy the files (Write-DfwMetricsToLogOps.ps1, config.json and get-sfwhostmetrics.sh) to the desired location
+2. Install required modules
   - Install-Module -Name Posh-SSH
   - Install-Module -Name VMware.PowerCLI
-2. Create encrypted credentials for every host (vCenter, ESXi and vROps) and copy the credential file to the script location by running
-  - New-VICredentialStoreItem -Host ESX1 –User root –Password SecretPass
-  - New-VICredentialStoreItem -Host ESX2 –User root –Password SecretPass
-  - New-VICredentialStoreItem -Host VC –User user –Password SecretPass
-  - New-VICredentialStoreItem -Host vROps –User admin –Password SecretPass
-  - Copy $env:APPDATA\VMware\credstore\vicredentials.xml path\to\copy\vicredentials.xml
-3. Modify confi.json with your infrastructure details
-4. Make sure get-sfwhostmetrics.sh is available at the script location
-5. Run command "Write-DfwMetricsToLogOps.ps1 -configLoc ./config.json"
-6. Optional: Schedule this script to run on regular basis
+3. Create encrypted credentials for every host (vCenter, ESXi and vROps) and copy the credential file to the script location by running
+  - New-VICredentialStoreItem -Host <ESX1> –User <root> –Password <SecretPass>
+  - New-VICredentialStoreItem -Host <ESX2> –User <root> –Password <SecretPass>
+  - New-VICredentialStoreItem -Host <VC> –User <user> –Password <SecretPass>
+  - New-VICredentialStoreItem -Host <vROps> –User <admin> –Password <SecretPass>
+  - Copy $env:APPDATA\VMware\credstore\vicredentials.xml <path\to\copy\vicredentials.xml>
+4. Modify "confi.json" and change it to your infrastructure details
 
-Voilat, DFW VM and Host metrics are written to the syslog of every host, and thereby, forwarded if a syslog server if configured. In addition, all the
-metrics have been written to the appropriate vROps objects (enabled by default in config.json).
+## Usage
+Run command within a PowerShell session "Write-DfwMetricsToLogOps.ps1 -configLoc ./config.json" and the PowerShell script will do its part.
+- Syslog: DFW metrics are written to the syslog of every host and forwarded to a syslog destination, for example vRLI, if configured.
+- vROps: DFW metrics are written to its appropriate object, which is either a VM or a host, if enabled in "config.json". There are several new DFW metrics created, which are
+  - VM|Custom Metric|NSX DFW|DFW Rules applied on eth[0-9]
+  - HostSystem|Custom Metric|NSX DFW|Total DFW Rules applied
+  - HostSystem|Custom Metric|NSX DFW|DFW Heap Usage of [moduleName] (%)
+  
+In addition, there are some vRLI und vROps example dashboards and alerts available within the appropriate folders.
