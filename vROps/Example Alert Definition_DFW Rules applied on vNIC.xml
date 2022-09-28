@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><alertContent>
+    <AlertDefinitions>
+        <AlertDefinition adapterKind="VMWARE" disableInBasePolicy="true" id="AlertDefinition-aebd4cc2-2919-4831-b001-12cf4e324349" name="_DFW Rules applied on vNIC exceeded threshold" resourceKind="VirtualMachine" subType="22" type="15">
+            <State severity="automatic">
+                <SymptomSet applyOn="self" operator="and" ref="SymptomDefinition-b5dae909-d02d-43b0-a4d4-dc7f0373c8d5"/>
+                <Impact key="health" type="badge"/>
+            </State>
+        </AlertDefinition>
+    </AlertDefinitions>
+    <SymptomDefinitions>
+        <SymptomDefinition adapterKind="VMWARE" cancelCycle="3" disableInBasePolicy="true" id="SymptomDefinition-b5dae909-d02d-43b0-a4d4-dc7f0373c8d5" name="_DFW Rules applied on eth0 exceeded threshold" resourceKind="VirtualMachine" waitCycle="3">
+            <State severity="critical">
+                <Condition key="Custom Metrics|NSX DFW|DFW Rules applied on eth0" operator="&gt;" thresholdType="static" type="metric" value="4000.0" valueType="numeric"/>
+            </State>
+        </SymptomDefinition>
+    </SymptomDefinitions>
+</alertContent>
