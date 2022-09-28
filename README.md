@@ -34,8 +34,8 @@ Please make sure HTTPS, TCP 443 (scripting host to vCenter/vROps) and SSH, TCP 2
 Run command within a PowerShell session "Write-DfwMetricsToLogOps.ps1 -configLoc ./config.json" and the PowerShell script will do its part.
 - Syslog: DFW metrics are written to the syslog of every host and forwarded to a syslog destination, for example vRLI, if configured.
 - vROps: DFW metrics are written to its appropriate object, which is either a VM or a host, if enabled in "config.json". There are several new DFW metrics created, which are
-  - VM|Custom Metric|NSX DFW|DFW Rules applied on eth[0-9]
-  - HostSystem|Custom Metric|NSX DFW|Total DFW Rules applied
-  - HostSystem|Custom Metric|NSX DFW|DFW Heap Usage of [moduleName] (%)
+  - VM|Custom Metrics|NSX DFW|DFW Rules applied on eth[0-9]
+  - HostSystem|Custom Metrics|NSX DFW|Total DFW Rules applied
+  - HostSystem|Custom Metrics|NSX DFW|DFW Heap Usage of [moduleName] (%)
   
 In addition, there are some vRLI und vROps example dashboards and alerts available within the appropriate folders.
