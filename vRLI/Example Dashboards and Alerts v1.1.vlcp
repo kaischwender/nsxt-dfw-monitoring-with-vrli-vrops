@@ -1,0 +1,143 @@
+{
+  "name":"DFW Host Metics",
+  "namespace":"com.vmware.vrli",
+  "contentPackId":"com.vmware.vrli",
+  "framework":"#9c4",
+  "version":"2.4",
+  "extractedFields":[ {
+    "displayName":"dfw_heap_module_name",
+    "preContext":"dfw_heap_module_name: ",
+    "postContext":",",
+    "regexValue":"\\S+",
+    "internalName":"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3imvqxax3nn5shk3dfl5xgc3lf",
+    "constraints":"{\"searchTerms\":\"\",\"filters\":[{\"internalName\":\"appname\",\"displayName\":\"appname\",\"operator\":\"CONTAINS\",\"value\":\"hostd\",\"fieldType\":\"STRING\",\"isExtracted\":false,\"hidden\":false}]}",
+    "info":null
+  }, {
+    "displayName":"dfw_heap_module_usage",
+    "preContext":"dfw_heap_module_usage: ",
+    "postContext":"",
+    "regexValue":"-?\\d+",
+    "internalName":"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3imvqxax3nn5shk3dfl52xgylhmu000000",
+    "constraints":"{\"filters\":[{\"internalName\":\"appname\",\"displayName\":\"appname\",\"operator\":\"CONTAINS\",\"value\":\"hostd\",\"fieldType\":\"STRING\",\"isExtracted\":false,\"hidden\":false}]}",
+    "info":null
+  }, {
+    "displayName":"dfw_host_rules",
+    "preContext":"dfw_host_rules: ",
+    "postContext":"",
+    "regexValue":"-?\\d+",
+    "internalName":"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3in5zxix3sovwgk4y0",
+    "constraints":"{\"filters\":[{\"internalName\":\"appname\",\"displayName\":\"appname\",\"operator\":\"CONTAINS\",\"value\":\"hostd\",\"fieldType\":\"STRING\",\"isExtracted\":false,\"hidden\":false}]}",
+    "info":null
+  }, {
+    "displayName":"dfw_vnic_name",
+    "preContext":"dfw_vnic_name: ",
+    "postContext":",",
+    "regexValue":"\\S+",
+    "internalName":"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3omfwwk000",
+    "constraints":"{\"searchTerms\":\"\",\"filters\":[{\"internalName\":\"appname\",\"displayName\":\"appname\",\"operator\":\"CONTAINS\",\"value\":\"hostd\",\"fieldType\":\"STRING\",\"isExtracted\":false,\"hidden\":false}]}",
+    "info":null
+  }, {
+    "displayName":"dfw_vnic_rules",
+    "preContext":"dfw_vnic_rules: ",
+    "postContext":"",
+    "regexValue":"-?\\d+",
+    "internalName":"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3sovwgk4y0",
+    "constraints":"{\"filters\":[{\"internalName\":\"appname\",\"displayName\":\"appname\",\"operator\":\"CONTAINS\",\"value\":\"hostd\",\"fieldType\":\"STRING\",\"isExtracted\":false,\"hidden\":false}]}",
+    "info":null
+  }, {
+    "displayName":"vmw_nsxt_comp",
+    "preContext":"comp=\"",
+    "postContext":"\"",
+    "regexValue":"\\S+",
+    "internalName":"ibadcnk7mnxw2ltwnv3wc4tffz3he3djozwxox3oon4hix3dn5wxa000",
+    "constraints":"{\"searchTerms\":\"subcomp\"}",
+    "info":null
+  }, {
+    "displayName":"vmw_nsxt_error_code",
+    "preContext":"errorCode=\"",
+    "postContext":"\"",
+    "regexValue":"\\S+",
+    "internalName":"ibadcnk7mnxw2ltwnv3wc4tffz3he3djozwxox3oon4hix3fojzg64s7mnxwizi0",
+    "constraints":"{\"searchTerms\":\"comp subcomp\"}",
+    "info":null
+  }, {
+    "displayName":"vmw_nsxt_subcomp",
+    "preContext":"subcomp=\"",
+    "postContext":"\"",
+    "regexValue":"\\S+",
+    "internalName":"ibadcnk7mnxw2ltwnv3wc4tffz3he3djozwxox3oon4hix3tovrgg33noa000000",
+    "constraints":"{\"searchTerms\":\"comp\"}",
+    "info":null
+  } ],
+  "queries":[ ],
+  "alerts":[ {
+    "name":"NSX-T DFW heap memory exceeded threshold",
+    "alertType":"RATE_BASED",
+    "chartQuery":"{\"query\":\"\",\"startTimeMillis\":-9223372036854775808,\"endTimeMillis\":9223372036854775807,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":true,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djozwxox3oon4hix3dn5wxa000\",\"operator\":\"CONTAINS\",\"value\":\"nsx-esx\"},{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djozwxox3oon4hix3tovrgg33noa000000\",\"operator\":\"CONTAINS\",\"value\":\"agg-service\"},{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djozwxox3oon4hix3fojzg64s7mnxwizi0\",\"operator\":\"CONTAINS\",\"value\":\"MPA11015\"}],\"supplementalConstraints\":[],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_nsxt_comp\",\"preContext\":\"comp=\\\"\",\"postContext\":\"\\\"\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djozwxox3oon4hix3dn5wxa000\",\"constraints\":\"{\\\"searchTerms\\\":\\\"subcomp\\\"}\"},{\"displayName\":\"vmw_nsxt_error_code\",\"preContext\":\"errorCode=\\\"\",\"postContext\":\"\\\"\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djozwxox3oon4hix3fojzg64s7mnxwizi0\",\"constraints\":\"{\\\"searchTerms\\\":\\\"comp subcomp\\\"}\"},{\"displayName\":\"vmw_nsxt_subcomp\",\"preContext\":\"subcomp=\\\"\",\"postContext\":\"\\\"\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djozwxox3oon4hix3tovrgg33noa000000\",\"constraints\":\"{\\\"searchTerms\\\":\\\"comp\\\"}\"}]}",
+    "messageQuery":"",
+    "hitCount":0.0,
+    "hitOperator":"GREATER_THAN",
+    "searchPeriod":3600000,
+    "searchInterval":600000
+  }, {
+    "name":"NSX-T DFW rules per host exceeded threshold",
+    "alertType":"RATE_BASED_WITH_GROUPS",
+    "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1615378823631,\"endTimeMillis\":1615382423630,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Sum\",\"value\":\"SUM\",\"requiresField\":true,\"numericOnly\":true}],\"field\":{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3sovwgk4y0\",\"displayName\":\"dfw_vnic_rules\",\"displayNamespace\":\"Unknown\"}}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Sum\",\"value\":\"SUM\",\"requiresField\":true,\"numericOnly\":true},\"piqlFunctionField\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3sovwgk4y0\",\"fieldConstraints\":[{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3omfwwk000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"hostname\",\"internalName\":\"hostname\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"dfw_vnic_name\",\"preContext\":\"dfw_vnic_name: \",\"postContext\":\",\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3omfwwk000\",\"constraints\":\"{\\\"searchTerms\\\":\\\"\\\",\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"hostd\\\",\\\"fieldType\\\":\\\"STRING\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"},{\"displayName\":\"dfw_vnic_rules\",\"preContext\":\"dfw_vnic_rules: \",\"postContext\":\"\",\"regexValue\":\"-?\\\\d+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3sovwgk4y0\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"hostd\\\",\\\"fieldType\\\":\\\"STRING\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+    "messageQuery":"",
+    "hitCount":120000.0,
+    "hitOperator":"GREATER_THAN",
+    "searchPeriod":3600000,
+    "searchInterval":600000
+  }, {
+    "name":"NSX-T DFW rules per vNic exceeded threshold",
+    "alertType":"RATE_BASED_WITH_GROUPS",
+    "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1615378348101,\"endTimeMillis\":1615381948100,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Max\",\"value\":\"MAX\",\"requiresField\":true,\"numericOnly\":true}],\"field\":{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3sovwgk4y0\",\"displayName\":\"dfw_vnic_rules\",\"displayNamespace\":\"Unknown\"}}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Max\",\"value\":\"MAX\",\"requiresField\":true,\"numericOnly\":true},\"piqlFunctionField\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3sovwgk4y0\",\"fieldConstraints\":[{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3omfwwk000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"dfw_vnic_name\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3omfwwk000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"dfw_vnic_name\",\"preContext\":\"dfw_vnic_name: \",\"postContext\":\",\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3omfwwk000\",\"constraints\":\"{\\\"searchTerms\\\":\\\"\\\",\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"hostd\\\",\\\"fieldType\\\":\\\"STRING\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"},{\"displayName\":\"dfw_vnic_rules\",\"preContext\":\"dfw_vnic_rules: \",\"postContext\":\"\",\"regexValue\":\"-?\\\\d+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3sovwgk4y0\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"hostd\\\",\\\"fieldType\\\":\\\"STRING\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+    "messageQuery":"",
+    "hitCount":4000.0,
+    "hitOperator":"GREATER_THAN",
+    "searchPeriod":3600000,
+    "searchInterval":600000
+  } ],
+  "dashboardSections":[ {
+    "views":[ {
+      "name":"DFW Host Metrics",
+      "constraints":[ ],
+      "rows":[ {
+        "widgets":[ {
+          "name":"Average of dfw_heap_module_usage grouped by dfw_heap_module_name, hostname",
+          "info":"",
+          "gridWidth":"1",
+          "chartType":"column",
+          "chartOptions":"{\"doublegroupbymultiseries\":true,\"legend\":true,\"swapfields\":false,\"doublegroupbystacking\":\"none\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1632258011823,\"endTimeMillis\":1632261611822,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Average\",\"value\":\"AVG\",\"requiresField\":true,\"numericOnly\":true}],\"field\":{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3imvqxax3nn5shk3dfl52xgylhmu000000\",\"displayName\":\"dfw_heap_module_usage\",\"displayNamespace\":\"Unknown\"}}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Average\",\"value\":\"AVG\",\"requiresField\":true,\"numericOnly\":true},\"piqlFunctionField\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3imvqxax3nn5shk3dfl52xgylhmu000000\",\"fieldConstraints\":[{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3imvqxax3nn5shk3dfl5xgc3lf\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"dfw_heap_module_name\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3imvqxax3nn5shk3dfl5xgc3lf\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"hostname\",\"internalName\":\"hostname\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"dfw_heap_module_name\",\"preContext\":\"dfw_heap_module_name: \",\"postContext\":\",\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3imvqxax3nn5shk3dfl5xgc3lf\",\"constraints\":\"{\\\"searchTerms\\\":\\\"\\\",\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"hostd\\\",\\\"fieldType\\\":\\\"STRING\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"},{\"displayName\":\"dfw_heap_module_usage\",\"preContext\":\"dfw_heap_module_usage: \",\"postContext\":\"\",\"regexValue\":\"-?\\\\d+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3imvqxax3nn5shk3dfl52xgylhmu000000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"hostd\\\",\\\"fieldType\\\":\\\"STRING\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"Avg of dfw_host_rules grouped by hostname",
+          "info":"",
+          "chartType":"column",
+          "chartOptions":"{}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1619812619754,\"endTimeMillis\":1619816219753,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Average\",\"value\":\"AVG\",\"requiresField\":true,\"numericOnly\":true}],\"field\":{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3in5zxix3sovwgk4y0\",\"displayName\":\"dfw_host_rules\",\"displayNamespace\":\"Unknown\"}}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Average\",\"value\":\"AVG\",\"requiresField\":true,\"numericOnly\":true},\"piqlFunctionField\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3in5zxix3sovwgk4y0\",\"fieldConstraints\":[{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3in5zxix3sovwgk4y0\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"hostname\",\"internalName\":\"hostname\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"dfw_host_rules\",\"preContext\":\"dfw_host_rules: \",\"postContext\":\"\",\"regexValue\":\"-?\\\\d+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3in5zxix3sovwgk4y0\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"hostd\\\",\\\"fieldType\\\":\\\"STRING\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        }, {
+          "name":"Avg of dfw_vnic_rules grouped by dfw_vnic_name",
+          "info":"",
+          "chartType":"column",
+          "chartOptions":"{}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1619812665119,\"endTimeMillis\":1619816265118,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Average\",\"value\":\"AVG\",\"requiresField\":true,\"numericOnly\":true}],\"field\":{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3sovwgk4y0\",\"displayName\":\"dfw_vnic_rules\",\"displayNamespace\":\"Unknown\"}}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Average\",\"value\":\"AVG\",\"requiresField\":true,\"numericOnly\":true},\"piqlFunctionField\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3sovwgk4y0\",\"fieldConstraints\":[{\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3omfwwk000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"dfw_vnic_name\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3omfwwk000\",\"displayNamespace\":\"Unknown\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"dfw_vnic_name\",\"preContext\":\"dfw_vnic_name: \",\"postContext\":\",\",\"regexValue\":\"\\\\S+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3omfwwk000\",\"constraints\":\"{\\\"searchTerms\\\":\\\"\\\",\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"hostd\\\",\\\"fieldType\\\":\\\"STRING\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"},{\"displayName\":\"dfw_vnic_rules\",\"preContext\":\"dfw_vnic_rules: \",\"postContext\":\"\",\"regexValue\":\"-?\\\\d+\",\"internalName\":\"ibadcnk7mnxw2ltwnv3wc4tffz3he3djmrthox3wnzuwgx3sovwgk4y0\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"hostd\\\",\\\"fieldType\\\":\\\"STRING\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        } ]
+      } ]
+    } ],
+    "header":""
+  } ],
+  "aliasFields":[ ],
+  "aliasRules":[ ],
+  "author":"kschwender@vmware.com",
+  "url":"",
+  "contentVersion":"1.1"
+}
