@@ -15,7 +15,7 @@ Write-DfwMetricsToLogOps.ps1 was tested with
 get-dfwhostmetrics.sh was tested with
   - ESXi 6.7 and above (busybox)
   
-An SSH session is established between the host running the PowerShell script and every ESXi host. Make sure TCP 22 is allowed by your firewalls.
+Please make sure HTTPS, TCP 443 (scripting host to vCenter/vROps) and SSH, TCP 22 (scripting host to ESXi) are allowed by your firewalls.
 
 ## Installation
 1. Copy the files (Write-DfwMetricsToLogOps.ps1, config.json and get-sfwhostmetrics.sh) to the desired location
