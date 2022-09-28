@@ -23,11 +23,11 @@ An SSH session is established between the host running the PowerShell script and
   - Install-Module -Name Posh-SSH
   - Install-Module -Name VMware.PowerCLI
 3. Create encrypted credentials for every host (vCenter, ESXi and vROps) and copy the credential file to the script location by running
-  - New-VICredentialStoreItem -Host <ESX1> –User <root> –Password <SecretPass>
-  - New-VICredentialStoreItem -Host <ESX2> –User <root> –Password <SecretPass>
-  - New-VICredentialStoreItem -Host <VC> –User <user> –Password <SecretPass>
-  - New-VICredentialStoreItem -Host <vROps> –User <admin> –Password <SecretPass>
-  - Copy $env:APPDATA\VMware\credstore\vicredentials.xml <path\to\copy\vicredentials.xml>
+  - New-VICredentialStoreItem -Host [ESX1] –User [root] –Password [SecretPass]
+  - New-VICredentialStoreItem -Host [ESX2] –User [root] –Password [SecretPass]
+  - New-VICredentialStoreItem -Host [VC] –User [user] –Password [SecretPass]
+  - New-VICredentialStoreItem -Host [vROps] –User [admin] –Password [SecretPass]
+  - Copy $env:APPDATA\VMware\credstore\vicredentials.xml [path\to\copy\vicredentials.xml]
 4. Modify "confi.json" and change it to your infrastructure details
 
 ## Usage
