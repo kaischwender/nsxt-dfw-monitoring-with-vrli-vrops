@@ -201,7 +201,7 @@ $shellScript = (Get-Content $config.shellScriptLoc | Select-String -Pattern '^#|
 # Connect to vCenter Server
 Write-Host "$(Get-Date): Connecting to vCenter Server $($config.vCenterHost)"
 $credentials = Get-VICredentialStoreItem -Host $config.vCenterHost -File $config.credentialLoc
-Connect-VIServer -Server $credentials.Host -User $credentials.User -Password $credentials.Password -ErrorAction SilentlyContinue | Out-Null
+Connect-VIServer -Server $credentials.Host -User $credentials.User -Password $credentials.Password -WarningAction SilentlyContinue -ErrorAction Stop | Out-Null
 
 # If enabled, get vROps auth token
 if ($config.postToVrops -eq $true) {
