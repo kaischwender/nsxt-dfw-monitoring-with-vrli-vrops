@@ -1,7 +1,7 @@
 {
   "credentialLoc": "path\\to\\vicredentials.xml",
   "vCenterHost": "vCenterFQDN",
-  "shellScriptLoc": "ath\\to\\get-dfwhostmetrics.sh",
+  "shellScriptLoc": "path\\to\\get-dfwhostmetrics.sh",
   "exclusionTag": "Edge",
   "postToVrops": "true",
   "vropsHost": "vROpsFQDN",
