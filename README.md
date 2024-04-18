@@ -29,6 +29,7 @@ Please make sure HTTPS, TCP 443 (scripting host to vCenter/vROps) and SSH, TCP 2
   - New-VICredentialStoreItem -Host [vROps] –User [admin] –Password [SecretPass]
   - Copy $env:APPDATA\VMware\credstore\vicredentials.xml [path\to\copy\vicredentials.xml]
 4. Modify "confi.json" and change it to your infrastructure details
+  - Exclusion Tag is a vSphere Tag that can be assigned to vSphere clusters or hosts to exclude these from being processed by the script
 
 ## Usage
 Run command within a PowerShell session "Write-DfwMetricsToLogOps.ps1 -configLoc ./config.json" and the PowerShell script will do its part.
